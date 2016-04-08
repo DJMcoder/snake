@@ -17,6 +17,7 @@ public class SnakeGame implements ArrowListener
     {
         playay = true;
         grid = new MyBoundedGrid<Block> (15,20);
+        snake = new Snake(grid);
         display = new BlockDisplay(grid);
         display.setArrowListener(this);
         display.setTitle("Snake");

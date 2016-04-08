@@ -22,8 +22,8 @@ public class Snake
     {
         locs = new ArrayList<Location>();
         grid = snakeGr;
-        int horMid = snakeGr.getNumCols();
-        int vertMid = snakeGr.getNumRows();
+        int horMid = snakeGr.getNumCols()/2;
+        int vertMid = snakeGr.getNumRows()/2;
         for(int x = -1; x < 2; x++)
         {
             Location snakeLoc = new Location(vertMid, horMid+x);
