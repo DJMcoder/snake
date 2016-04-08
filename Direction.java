@@ -1,6 +1,6 @@
 
 /**
- * The Direction the Snake is going
+ * The direction the Snake is going
  * 
  * @author David Melisso
  * @author Jin Kim

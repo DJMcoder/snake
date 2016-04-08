@@ -1,10 +1,11 @@
 import java.awt.Color;
 import java.util.ArrayList;
 /**
- * Write a description of class Snake here.
+ * The Snake class is a collection of locations that represents the snake in the SnakeGame.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author David Melisso
+ * @author Jin Kim
+ * @version April 7, 2016
  */
 public class Snake
 {
