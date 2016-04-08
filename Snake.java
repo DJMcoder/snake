@@ -66,11 +66,11 @@ public class Snake
      */
     private void addToLocations(MyBoundedGrid<Block> addGrid, Location loc)
     {
-            Block square = new Block();
-            square.putSelfInGrid(addGrid, loc);
-            square.setColor(color);
+        Block square = new Block();
+        square.putSelfInGrid(addGrid, loc);
+        square.setColor(color);
     }
-    
+
     /**
      * Moves a snake by a given number of rows or columns.
      * 
@@ -107,7 +107,7 @@ public class Snake
         }
         return true;
     }
-    
+
     /**
      * Changes the direction that the snake is going based off of input.
      * Will not change direction if 
@@ -126,5 +126,25 @@ public class Snake
             return;
         }
         direction.setDirection(dir);
+    }
+
+    /**
+     * Determines the direction of the snake and moves it.
+     */
+    public boolean determineDirection()
+    {
+        switch(direction.getDirection())
+        {
+            case "UP":
+            return translate(0,1);
+            case "DOWN":
+            return translate(0,-1);
+            case "RIGHT":
+            return translate(1,0);
+            case "LEFT":
+            return translate(-1,0);
+            default:
+            return false;
+        }
     }
 }

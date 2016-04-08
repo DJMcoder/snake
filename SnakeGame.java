@@ -9,11 +9,13 @@ import java.util.ArrayList;
  */
 public class SnakeGame implements ArrowListener
 {
+    private boolean playay;
     private MyBoundedGrid<Block> grid;
     private BlockDisplay display;
     private Snake snake;
     public SnakeGame()
     {
+        playay = true;
         grid = new MyBoundedGrid<Block> (15,20);
         display = new BlockDisplay(grid);
         display.setArrowListener(this);
@@ -27,14 +29,13 @@ public class SnakeGame implements ArrowListener
             try 
             {
                 Thread.sleep(1000);
-                if(jinTetrad.translate(1,0)) //we need a new method to get the direction of the snake.
+                if(snake.determineDirection()) //we need a new method to get the direction of the snake.
                 {
                     display.showBlocks();
                 }
                 else
                 {
-                    clearCompletedRows();
-                    jinTetrad = new Tetrad(grid);
+                    //snake dies here.
                     display.showBlocks();
                 }
             }
