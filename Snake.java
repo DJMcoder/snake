@@ -12,7 +12,7 @@ public class Snake
     private ArrayList<Location> locs;
     private MyBoundedGrid<Block> grid;
     private Color color;
-    private Direction direction;
+    private String direction;
     /**
      * Constructor for the snake class
      * 
@@ -119,32 +119,88 @@ public class Snake
      */
     public void changeDirection(String dir)
     {
-        String curDirec = direction.getDirection();
-        String oppDirec = direction.getOppositeDirection();
-        if (dir == curDirec || dir == oppDirec)
+        String oppDirec = getOppositeDirection();
+        if (dir == direction || dir == oppDirec)
         {
             return;
         }
-        direction.setDirection(dir);
+        direction = dir;
     }
 
+    
+    
+    /**
+     * Returns the Direction
+     * 
+     * @return the direciton
+     */
+    public String getDirection()
+    {
+        return direction;
+    }
+    
+    /**
+     * Returns the opposite Direction
+     * 
+     * @return the opposite Direction
+     */
+    public String getOppositeDirection()
+    {
+        switch(direction)
+        {
+            case "UP":
+                return "DOWN";
+            case "DOWN":
+                return "UP";
+            case "RIGHT":
+                return "LEFT";
+            case "LEFT":
+                return "RIGHT";
+            default:
+                return "";
+        }
+    }
+    
+    /**
+     * Sets the Direction to a new Direction.
+     * 
+     * @param dir   Direction to set it to
+     */
+    public void setDirection(String dir)
+    {
+        switch (dir)
+        {
+            case "UP": 
+                direction = "UP";
+            case "DOWN":
+                direction = "DOWN";
+            case "LEFT":
+                direction = "LEFT";
+            case "RIGHT":
+                direction = "RIGHT";
+            default:
+                throw new IllegalArgumentException("Parameter is not a direction");
+        }
+        
+    }
+    
     /**
      * Determines the direction of the snake and moves it.
      */
     public boolean determineDirection()
     {
-        switch(direction.getDirection())
+        switch(direction)
         {
             case "UP":
-            return translate(0,1);
+                return translate(0,1);
             case "DOWN":
-            return translate(0,-1);
+                return translate(0,-1);
             case "RIGHT":
-            return translate(1,0);
+                return translate(1,0);
             case "LEFT":
-            return translate(-1,0);
+                return translate(-1,0);
             default:
-            return false;
+                return false;
         }
     }
 }
