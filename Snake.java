@@ -125,6 +125,6 @@ public class Snake
         {
             return;
         }
-        direction = new Direction(dir);
+        direction.setDirection(dir);
     }
 }
