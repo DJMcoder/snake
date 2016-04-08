@@ -22,6 +22,7 @@ public class Snake
     {
         locs = new ArrayList<Location>();
         grid = snakeGr;
+        direction = "RIGHT";
         int horMid = snakeGr.getNumCols()/2;
         int vertMid = snakeGr.getNumRows()/2;
         for(int x = -1; x < 2; x++)
@@ -92,7 +93,7 @@ public class Snake
             addToLocations(grid, target);
         }
 
-        for(int sn = 1; sn < beforeMove.size(); sn++)
+        for(int sn = 1; sn < beforeMove.size(); sn++) // Rest of the body following the head.
         {
             Location current = beforeMove.get(sn);
             if(areEmpty(grid, old))

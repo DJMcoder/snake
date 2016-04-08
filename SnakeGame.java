@@ -21,6 +21,7 @@ public class SnakeGame implements ArrowListener
         display = new BlockDisplay(grid);
         display.setArrowListener(this);
         display.setTitle("Snake");
+        play();
     }
     
     public void play()
