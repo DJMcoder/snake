@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ upPressed()
+comment0.text=\n\ Up\ is\ pressed.\n
+comment1.params=
+comment1.target=void\ downPressed()
+comment1.text=\n\ Down\ is\ pressed.\n
+comment2.params=
+comment2.target=void\ leftPressed()
+comment2.text=\n\ Left\ is\ pressed.\n
+comment3.params=
+comment3.target=void\ rightPressed()
+comment3.text=\n\ Right\ is\ pressed.\n
+numComments=4

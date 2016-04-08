@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=snakeGr
+comment0.target=Snake(MyBoundedGrid)
+comment0.text=\n\ Constructor\ for\ the\ snake\ class\n\ \n\ @precondition\ \ \ \ snakeGr\ has\ a\ greater\ length\ and\ width\ than\ 3.\n
+comment1.params=eGrid\ loc
+comment1.target=boolean\ areEmpty(MyBoundedGrid,\ Location)
+comment1.text=\n\ Checks\ to\ see\ if\ the\ given\ locations\ in\ the\ given\ grid\ are\ empty.\n
+comment2.params=
+comment2.target=java.util.ArrayList\ getLocations()
+comment3.params=
+comment3.target=Location\ getHeadLocation()
+comment4.params=addGrid\ loc
+comment4.target=void\ addToLocations(MyBoundedGrid,\ Location)
+comment4.text=\n\ Adds\ a\ Tetrad\ to\ a\ given\ location\ in\ the\ given\ grid.\n\ \n\ @param\ \ \ addGrid\ \ \ \ grid\ where\ the\ tetrad\ will\ be\ placed\ in.\n\ @param\ \ \ locs\ \ \ \ location\ where\ the\ tetrad\ will\ be\ placed\ in.\n
+comment5.params=deltaRow\ deltaCol
+comment5.target=boolean\ translate(int,\ int)
+comment5.text=\n\ Moves\ a\ snake\ by\ a\ given\ number\ of\ rows\ or\ columns.\n\ \n\ @param\ \ \ deltaRow\ \ \ \ number\ of\ rows\ the\ snake\ block\ will\ be\ moved.\n\ @param\ \ \ deltaCol\ \ \ \ number\ of\ columns\ the\ snake\ block\ will\ be\ moved.\n\ \n\ @return\ \ true\ if\ it\ is\ possible\ to\ translate\ the\ snake\ block\ to\ the\n\ \ \ \ \ \ \ \ \ \ location\ designated,\ otherwise;\n\ \ \ \ \ \ \ \ \ \ false.\n
+comment6.params=dir
+comment6.target=void\ changeDirection(java.lang.String)
+numComments=7

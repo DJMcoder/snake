@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ run()
+comment1.params=
+comment1.target=void\ createAndShowGUI()
+comment1.text=\n\ Create\ the\ GUI\ and\ show\ it.\ \ For\ thread\ safety,\n\ this\ method\ should\ be\ invoked\ from\ the\n\ event-dispatching\ thread.\n
+comment2.params=
+comment2.target=void\ showBlocks()
+comment2.text=\n\ Redraws\ the\ board\ to\ include\ the\ pieces\ and\ border\ colors.\n
+comment3.params=title
+comment3.target=void\ setTitle(java.lang.String)
+comment3.text=\n\ sets\ the\ title\ of\ the\ window.\n\ \n\ @param\ \ \ title\ \ \ title\ of\ the\ window.\n
+comment4.params=e
+comment4.target=void\ keyTyped(java.awt.event.KeyEvent)
+comment4.text=\n\ key\ typed.\n\ \n\ @param\ \ \ e\ \ \ key\ typed\ by\ user.\n
+comment5.params=e
+comment5.target=void\ keyReleased(java.awt.event.KeyEvent)
+comment5.text=\n\ key\ released.\n\ \n\ @param\ \ \ e\ \ \ key\ released\ by\ user.\n
+comment6.params=e
+comment6.target=void\ keyPressed(java.awt.event.KeyEvent)
+comment6.text=\n\ Key\ pressed.\n\ \n\ @param\ \ \ e\ \ \ key\ released\ by\ user.\n
+comment7.params=newListener
+comment7.target=void\ setArrowListener(ArrowListener)
+comment7.text=\n\ Sets\ ArrowListener\ to\ a\ new\ value.\n\ \n\ @param\ \ \ newListener\ \ \ \ new\ value\ of\ ArrowListener.\n
+numComments=8

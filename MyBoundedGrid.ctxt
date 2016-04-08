@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=rows\ cols
+comment0.target=MyBoundedGrid(int,\ int)
+comment0.text=\n\ Constructor\ for\ the\ class\ MyBoundedGrid\n\ \n\ @param\ \ \ rows\ \ \ \ row\ number\ of\ the\ array.\n\ @param\ \ \ cols\ \ \ \ col\ number\ of\ the\ array.\n
+comment1.params=
+comment1.target=int\ getNumRows()
+comment1.text=\n\ returns\ the\ number\ rows\ in\ the\ array.\n\ \n\ @return\ \ the\ number\ of\ rows\n
+comment2.params=
+comment2.target=int\ getNumCols()
+comment2.text=\n\ returns\ the\ number\ columns\ in\ the\ array.\n\ \n\ @return\ the\ number\ of\ columns\n
+comment3.params=loc
+comment3.target=boolean\ isValid(Location)
+comment3.text=\n\ Determines\ whether\ a\ location\ is\ valid.\n\ \n\ @param\ \ \ loc\ the\ location\ in\ question\n\ @return\ \ true\ if\ valid,\ otherwise;\n\ \ \ \ \ \ \ \ \ \ false.\n
+comment4.params=loc
+comment4.target=java.lang.Object\ get(Location)
+comment4.text=\n\ Returns\ the\ object\ at\ location\ loc.\n\ \n\ @param\ \ \ loc\ location\ of\ the\ object.\n\ @return\ \ the\ object\ at\ location\ loc.\n
+comment5.params=loc\ obj
+comment5.target=java.lang.Object\ put(Location,\ java.lang.Object)
+comment5.text=\n\ Puts\ e\ object\ in\ the\ location\ loc.\n\ \n\ @param\ \ \ loc\ new\ location\ of\ the\ object.\n\ @param\ \ \ obj\ object\ to\ be\ placed\ in\ the\ location.\n\ @return\ \ the\ object\ that\ was\ at\ location\ loc.\n
+comment6.params=loc
+comment6.target=java.lang.Object\ remove(Location)
+comment6.text=\n\ Removes\ object\ at\ location\ loc.\n\ \n\ @param\ \ \ loc\ location\ where\ the\ object\ was\ removed\ from.\n\ @return\ \ the\ object\ removed\ from\ location\ loc.\n
+comment7.params=
+comment7.target=java.util.ArrayList\ getOccupiedLocations()
+comment7.text=\n\ Gets\ the\ location\ that\ are\ occupied.\n\ \n\ @return\ \ returns\ the\ locations\ that\ are\ occupied.\n
+numComments=8

@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Block()
+comment0.text=\n\ constructs\ a\ blue\ block,\ because\ blue\ is\ the\ greatest\ color\ ever\!\n
+comment1.params=
+comment1.target=java.awt.Color\ getColor()
+comment1.text=\n\ Gets\ the\ color\ of\ this\ block.\n\ \n\ @return\ \ the\ color\ of\ the\ block.\n
+comment2.params=newColor
+comment2.target=void\ setColor(java.awt.Color)
+comment2.text=\n\ Sets\ the\ color\ of\ this\ block\ to\ newColor.\n\ \n\ @param\ \ \ newColor\ \ \ \ new\ color\ of\ the\ block.\n
+comment3.params=
+comment3.target=void\ removeSelfFromGrid()
+comment3.text=\n\ Removes\ block\ from\ its\ Grid.\n\ @precondition\:\ \ this\ block\ is\ contained\ in\ a\ grid\n
+comment4.params=
+comment4.target=java.lang.String\ toString()
+comment4.text=\n\ returns\ a\ string\ with\ the\ location\ and\ a\ color\ of\ this\ block.\n\ \n\ @return\ \ a\ string\ with\ the\ location\ and\ a\ color\ of\ this\ block.\n
+numComments=5
