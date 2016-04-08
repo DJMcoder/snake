@@ -108,9 +108,23 @@ public class Snake
         return true;
     }
     
+    /**
+     * Changes the direction that the snake is going based off of input.
+     * Will not change direction if 
+     *      it is already going in the direction requested
+     *      it is going in the opposite off the direciton requested
+     *      
+     * @param dir   the direction requested
+     * 
+     */
     public void changeDirection(String dir)
     {
         String curDirec = direction.getDirection();
-        
+        String oppDirec = direction.getOppositeDirection();
+        if (dir == curDirec || dir == oppDirec)
+        {
+            return;
+        }
+        direction = new Direction(dir);
     }
 }
