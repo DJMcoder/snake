@@ -1,0 +1,51 @@
+Class documentation
+<---- javadoc command: ---->
+/Applications/SPlueJ.app/Contents/Frameworks/jdk.framework/Versions/A/Contents/Home/bin/javadoc
+-author
+-version
+-nodeprecated
+-tag
+precondition:a:Precondition:
+-tag
+postcondition:a:Postcondition:
+-tag
+param
+-tag
+return
+-package
+-noindex
+-notree
+-nohelp
+-nonavbar
+-source
+1.8
+-classpath
+/Applications/SPlueJ.app/Contents/Resources/Java/bluejcore.jar:/Applications/SPlueJ.app/Contents/Resources/Java/junit-4.8.2.jar:/GridWorldCaseStudy/GridWorldCodeBlueJ/gridworld.jar:/Applications/SPlueJ.app/Contents/Resources/Java/userlib/pi4j-core.jar:/Applications/SPlueJ.app/Contents/Resources/Java/userlib/pi4j-device.jar:/Applications/SPlueJ.app/Contents/Resources/Java/userlib/pi4j-gpio-extension.jar:/Applications/SPlueJ.app/Contents/Resources/Java/userlib/pi4j-service.jar:/GridWorldCaseStudy/GridWorldCodeBlueJ/projects/snake
+-d
+/GridWorldCaseStudy/GridWorldCodeBlueJ/projects/snake/doc
+-encoding
+UTF-8
+-charset
+UTF-8
+-docletpath
+/Applications/SPlueJ.app/Contents/Resources/Java/bjdoclet.jar
+-doclet
+bluej.doclet.doclets.formats.html.HtmlDoclet
+/GridWorldCaseStudy/GridWorldCodeBlueJ/projects/snake/SnakeGame.java
+<---- end of javadoc command ---->
+Loading source file /GridWorldCaseStudy/GridWorldCodeBlueJ/projects/snake/SnakeGame.java...
+Constructing Javadoc information...
+Standard Doclet version 1.8.0_20
+Building tree for all the packages and classes...
+Generating /GridWorldCaseStudy/GridWorldCodeBlueJ/projects/snake/doc/SnakeGame.html...
+Generating /GridWorldCaseStudy/GridWorldCodeBlueJ/projects/snake/doc/package-frame.html...
+Generating /GridWorldCaseStudy/GridWorldCodeBlueJ/projects/snake/doc/package-summary.html...
+Generating /GridWorldCaseStudy/GridWorldCodeBlueJ/projects/snake/doc/constant-values.html...
+Building index for all the packages and classes...
+Building index for all classes...
+Generating /GridWorldCaseStudy/GridWorldCodeBlueJ/projects/snake/doc/allclasses-frame.html...
+Generating /GridWorldCaseStudy/GridWorldCodeBlueJ/projects/snake/doc/allclasses-noframe.html...
+Generating /GridWorldCaseStudy/GridWorldCodeBlueJ/projects/snake/doc/index.html...
+Generating /GridWorldCaseStudy/GridWorldCodeBlueJ/projects/snake/doc/stylesheet.css...
+Note: Custom tags that could override future standard tags:  @precondition, @postcondition. To avoid potential overrides, use at least one period character (.) in custom tag names.
+Note: Custom tags that were not seen:  @precondition, @postcondition
