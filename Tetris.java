@@ -30,6 +30,30 @@ public class Tetris implements ArrowListener
         play();
         gameOver = false;
     }
+    /**
+     * Constructor for Tetris that allows for immediate GameOver.
+     * 
+     * @param gameover  whether or not the game is over
+     */
+    public Tetris(boolean gameover)
+    {
+        if (gameover)
+        {
+            grid = new MyBoundedGrid<Block>(11, 15);
+            display = new BlockDisplay(grid);
+            activeTetrad = new Tetrad(grid, true);
+            display.setArrowListener(this);
+            display.showBlocks();
+            display.setTitle("Game Over");
+        }
+        else
+        {
+            new Tetris();
+        }
+    }
+    /**
+     * Whether or not the game is o
+     */
     public boolean isGameOver()
     {
         return gameOver;
@@ -77,13 +101,6 @@ public class Tetris implements ArrowListener
                 display.showBlocks();
             }
         }
-    }
-    /**
-     * Closes the game
-     */
-    public void closeGame()
-    {
-        display.closeWindow();
     }
     /**
      * Translates the block to the right when the right-arrow is pressed

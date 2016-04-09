@@ -168,4 +168,9 @@ public class BlockDisplay implements KeyListener
     {
         this.listener = newListener;
     }
+    public void closeWindow()
+    {
+        frame.setVisible(false); //you can't see me!
+        frame.dispose();
+    }
 }

@@ -38,7 +38,9 @@ public class SnakeGame implements ArrowListener
                 else
                 {
                     //snake dies here.
+                    playay = false;
                     display.showBlocks();
+                    new Tetris(true);
                 }
             }
             catch(InterruptedException e)
