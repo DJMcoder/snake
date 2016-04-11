@@ -90,21 +90,20 @@ public class Snake
         ArrayList<Location> beforeMove = locs;
         if(areEmpty(grid, target))
         {
+            grid.get(old).removeSelfFromGrid();
             addToLocations(grid, target);
+        }
+        else
+        {
+            return false;
         }
 
         for(int sn = 1; sn < beforeMove.size(); sn++) // Rest of the body following the head.
         {
             Location current = beforeMove.get(sn);
-            if(areEmpty(grid, old))
-            {
-                addToLocations(grid, old);
-                old = current;
-            }
-            else
-            {
-                return false;
-            }
+            grid.get(current).removeSelfFromGrid();
+            addToLocations(grid, old);
+            old = current;
         }
         return true;
     }
@@ -128,8 +127,6 @@ public class Snake
         direction = dir;
     }
 
-    
-    
     /**
      * Returns the Direction
      * 
@@ -139,7 +136,7 @@ public class Snake
     {
         return direction;
     }
-    
+
     /**
      * Returns the opposite Direction
      * 
@@ -150,18 +147,18 @@ public class Snake
         switch(direction)
         {
             case "UP":
-                return "DOWN";
+            return "DOWN";
             case "DOWN":
-                return "UP";
+            return "UP";
             case "RIGHT":
-                return "LEFT";
+            return "LEFT";
             case "LEFT":
-                return "RIGHT";
+            return "RIGHT";
             default:
-                return "";
+            return "";
         }
     }
-    
+
     /**
      * Sets the Direction to a new Direction.
      * 
@@ -172,19 +169,19 @@ public class Snake
         switch (dir)
         {
             case "UP": 
-                direction = "UP";
+            direction = "UP";
             case "DOWN":
-                direction = "DOWN";
+            direction = "DOWN";
             case "LEFT":
-                direction = "LEFT";
+            direction = "LEFT";
             case "RIGHT":
-                direction = "RIGHT";
+            direction = "RIGHT";
             default:
-                throw new IllegalArgumentException("Parameter is not a direction");
+            throw new IllegalArgumentException("Parameter is not a direction");
         }
-        
+
     }
-    
+
     /**
      * Determines the direction of the snake and moves it.
      */
@@ -193,15 +190,15 @@ public class Snake
         switch(direction)
         {
             case "UP":
-                return translate(0,1);
+            return translate(0,1);
             case "DOWN":
-                return translate(0,-1);
+            return translate(0,-1);
             case "RIGHT":
-                return translate(1,0);
+            return translate(1,0);
             case "LEFT":
-                return translate(-1,0);
+            return translate(-1,0);
             default:
-                return false;
+            return false;
         }
     }
 }
