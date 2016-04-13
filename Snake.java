@@ -144,21 +144,36 @@ public class Snake
      */
     public String getOppositeDirection()
     {
-        switch(direction)
+        if (direction == "UP")
         {
-            case "UP":
             return "DOWN";
-            case "DOWN":
-            return "UP";
-            case "RIGHT":
-            return "LEFT";
-            case "LEFT":
-            return "RIGHT";
-            default:
-            return "";
         }
+        else if (direction == "DOWN")
+        {
+            return "UP";
+        }
+        else if (direction == "RIGHT")
+        {
+            return "LEFT";
+        }
+        else if (direction =="LEFT")
+        {
+            return "RIGHT";
+        }
+        throw new IllegalArgumentException("Direction is not a direction.");
     }
 
+    /**
+     * Returns whether parameter is a valid Direction
+     * 
+     * @param dir   the direction to check
+     * @return whether it was valid or not
+     */
+    public boolean validDirection(String dir)
+    {
+        return dir=="UP"||dir=="DOWN"||dir=="LEFT"||dir=="RIGHT";
+    }
+    
     /**
      * Sets the Direction to a new Direction.
      * 
@@ -166,20 +181,12 @@ public class Snake
      */
     public void setDirection(String dir)
     {
-        switch (dir)
+        if (validDirection(dir))
         {
-            case "UP": 
-            direction = "UP";
-            case "DOWN":
-            direction = "DOWN";
-            case "LEFT":
-            direction = "LEFT";
-            case "RIGHT":
-            direction = "RIGHT";
-            default:
-            throw new IllegalArgumentException("Parameter is not a direction");
+            direction = dir;
+            return;
         }
-
+        throw new IllegalArgumentException("Parameter is not a direction");
     }
 
     /**
@@ -187,18 +194,22 @@ public class Snake
      */
     public boolean determineDirection()
     {
-        switch(direction)
-        {
-            case "UP":
-            return translate(0,1);
-            case "DOWN":
-            return translate(0,-1);
-            case "RIGHT":
-            return translate(1,0);
-            case "LEFT":
-            return translate(-1,0);
-            default:
+            if (direction=="UP")
+            {
+                return translate(0,1);
+            }
+            else if (direction=="DOWN")
+            {
+                return translate(0,-1);
+            }
+            else if (direction=="RIGHT")
+            {
+                return translate(1,0);
+            }
+            else if (direction=="LEFT")
+            {
+                return translate(-1,0);
+            }
             return false;
-        }
     }
 }
