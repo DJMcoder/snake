@@ -1,4 +1,4 @@
-    import java.awt.Color;
+import java.awt.Color;
 import java.util.ArrayList;
 /**
  * The Snake class is a collection of locations that represents the snake in the SnakeGame.
@@ -92,18 +92,17 @@ public class Snake
         {
             grid.get(old).removeSelfFromGrid();
             addToLocations(grid, target);
+            for(int sn = 1; sn < beforeMove.size(); sn++) // Rest of the body following the head.
+            {
+                Location current = beforeMove.get(sn);
+                grid.get(current).removeSelfFromGrid();
+                addToLocations(grid, old);
+                old = current;
+            }
         }
         else
         {
             return false;
-        }
-
-        for(int sn = 1; sn < beforeMove.size(); sn++) // Rest of the body following the head.
-        {
-            Location current = beforeMove.get(sn);
-            grid.get(current).removeSelfFromGrid();
-            addToLocations(grid, old);
-            old = current;
         }
         return true;
     }
@@ -173,7 +172,7 @@ public class Snake
     {
         return dir=="UP"||dir=="DOWN"||dir=="LEFT"||dir=="RIGHT";
     }
-    
+
     /**
      * Sets the Direction to a new Direction.
      * 
@@ -194,22 +193,22 @@ public class Snake
      */
     public boolean determineDirection()
     {
-            if (direction=="UP")
-            {
-                return translate(0,1);
-            }
-            else if (direction=="DOWN")
-            {
-                return translate(0,-1);
-            }
-            else if (direction=="RIGHT")
-            {
-                return translate(1,0);
-            }
-            else if (direction=="LEFT")
-            {
-                return translate(-1,0);
-            }
-            return false;
+        if (direction=="UP")
+        {
+            return translate(0,1);
+        }
+        else if (direction=="DOWN")
+        {
+            return translate(0,-1);
+        }
+        else if (direction=="RIGHT")
+        {
+            return translate(1,0);
+        }
+        else if (direction=="LEFT")
+        {
+            return translate(-1,0);
+        }
+        return false;
     }
 }
