@@ -22,7 +22,7 @@ public class Snake
     {
         locs = new ArrayList<Location>();
         grid = snakeGr;
-        direction = "RIGHT";
+        direction = "LEFT";
         int horMid = snakeGr.getNumCols()/2;
         int vertMid = snakeGr.getNumRows()/2;
         for(int x = -1; x < 2; x++)
@@ -42,7 +42,7 @@ public class Snake
     private boolean areEmpty(MyBoundedGrid<Block> eGrid, Location loc)
     {
         boolean isEmpty = true;
-        if(!eGrid.isValid(loc) || eGrid.get(loc) != null)
+        if(!eGrid.isValid(loc) && eGrid.get(loc) != null)
         {
             return false;
         }
@@ -193,21 +193,21 @@ public class Snake
      */
     public boolean determineDirection()
     {
-        if (direction=="UP")
+        if (direction.equals("UP"))
         {
-            return translate(0,1);
+            return translate(-1,0);
         }
-        else if (direction=="DOWN")
-        {
-            return translate(0,-1);
-        }
-        else if (direction=="RIGHT")
+        else if (direction.equals("DOWN"))
         {
             return translate(1,0);
         }
-        else if (direction=="LEFT")
+        else if (direction.equals("RIGHT"))
         {
-            return translate(-1,0);
+            return translate(0,1);
+        }
+        else if (direction.equals("LEFT"))
+        {
+            return translate(0,-1);
         }
         return false;
     }
