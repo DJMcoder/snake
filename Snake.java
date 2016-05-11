@@ -39,14 +39,13 @@ public class Snake
     /**
      * Checks to see if the given locations in the given grid are empty.
      */
-    private boolean areEmpty(MyBoundedGrid<Block> eGrid, Location loc)
+    private boolean isEmpty(MyBoundedGrid<Block> eGrid, Location loc)
     {
-        boolean isEmpty = true;
-        if(!eGrid.isValid(loc) && eGrid.get(loc) != null)
+        if(eGrid.isValid(loc) && eGrid.get(loc) == null)
         {
-            return false;
+            return true;
         }
-        return isEmpty;
+        return false;
     }
 
     public ArrayList<Location> getLocations()
@@ -84,26 +83,16 @@ public class Snake
      */
     public boolean translate(int deltaRow, int deltaCol)
     {
-        Location old = getHeadLocation();
-        Location target = new Location (getHeadLocation().getRow() + deltaRow,
+        Location headTarget = new Location (getHeadLocation().getRow() + deltaRow,
                 getHeadLocation().getCol() + deltaCol);
-        ArrayList<Location> beforeMove = locs;
-        if(areEmpty(grid, target))
-        {
-            grid.get(old).removeSelfFromGrid();
-            addToLocations(grid, target);
-            for(int sn = 1; sn < beforeMove.size(); sn++) // Rest of the body following the head.
-            {
-                Location current = beforeMove.get(sn);
-                grid.get(current).removeSelfFromGrid();
-                addToLocations(grid, old);
-                old = current;
-            }
-        }
-        else
+        if (!grid.isValid(headTarget) || !isEmpty(grid, headTarget))
         {
             return false;
         }
+        locs.add(0, headTarget);
+        Location toRemove = locs.remove(locs.size()-1);
+        addToLocations(grid, headTarget);
+        grid.get(toRemove).removeSelfFromGrid();
         return true;
     }
 
