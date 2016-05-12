@@ -41,7 +41,7 @@ public class Snake
      */
     private boolean isEmpty(MyBoundedGrid<Block> eGrid, Location loc)
     {
-        if(eGrid.isValid(loc) && eGrid.get(loc) == null)
+        if(eGrid.isValid(loc) && (eGrid.get(loc) == null || eGrid.get(loc).getColor().equals(Color.CYAN)))
         {
             return true;
         }
