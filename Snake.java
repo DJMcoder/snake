@@ -85,14 +85,23 @@ public class Snake
     {
         Location headTarget = new Location (getHeadLocation().getRow() + deltaRow,
                 getHeadLocation().getCol() + deltaCol);
+        boolean eatenItem = false;
+        if (grid.get(headTarget).equals(Color.GREEN))
+        {
+            eatenItem = true;
+            grid.get(headTarget).removeSelfFromGrid();
+        }
         if (!grid.isValid(headTarget) || !isEmpty(grid, headTarget))
         {
             return false;
         }
         locs.add(0, headTarget);
-        Location toRemove = locs.remove(locs.size()-1);
         addToLocations(grid, headTarget);
-        grid.get(toRemove).removeSelfFromGrid();
+        if (!eatenItem)
+        {
+            Location toRemove = locs.remove(locs.size()-1);
+            grid.get(toRemove).removeSelfFromGrid();
+        }
         return true;
     }
 
