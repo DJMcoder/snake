@@ -13,13 +13,17 @@ public class Snake
     private MyBoundedGrid<Block> grid;
     private Color color;
     private String direction;
+    private SnakeGame game;
+    private int itemsEaten;
     /**
      * Constructor for the snake class
      * 
      * @precondition    snakeGr has a greater length and width than 3.
      */
-    public Snake(MyBoundedGrid<Block> snakeGr)
+    public Snake(MyBoundedGrid<Block> snakeGr, SnakeGame theGame)
     {
+        game = theGame;
+        itemsEaten = 0;
         locs = new ArrayList<Location>();
         grid = snakeGr;
         direction = "LEFT";
@@ -86,9 +90,11 @@ public class Snake
         Location headTarget = new Location (getHeadLocation().getRow() + deltaRow,
                 getHeadLocation().getCol() + deltaCol);
         boolean eatenItem = false;
-        if (grid.get(headTarget).equals(Color.GREEN))
+        Block blockTarget = grid.get(headTarget);
+        if (blockTarget!=null && blockTarget.getColor().equals(Color.GREEN))
         {
             eatenItem = true;
+            itemsEaten++;
             grid.get(headTarget).removeSelfFromGrid();
         }
         if (!grid.isValid(headTarget) || !isEmpty(grid, headTarget))
@@ -101,6 +107,10 @@ public class Snake
         {
             Location toRemove = locs.remove(locs.size()-1);
             grid.get(toRemove).removeSelfFromGrid();
+        }
+        else
+        {
+            game.spawnFoodStuff();
         }
         return true;
     }
@@ -211,5 +221,15 @@ public class Snake
             return translate(0,-1);
         }
         return false;
+    }
+    
+    /**
+     * Returns the number of items eaten
+     * 
+     * @return  the number of items eaten
+     */
+    public int getNumItemsEaten()
+    {
+        return itemsEaten;
     }
 }

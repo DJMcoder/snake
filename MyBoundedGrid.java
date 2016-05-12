@@ -132,4 +132,26 @@ public class MyBoundedGrid<E>
         }
         return notEmpty;
     }
+    
+    /**
+     * Gets the location that are unoccupied.
+     * 
+     * @return  returns the locations that are unoccupied.
+     */
+    public ArrayList<Location> getUnoccupiedLocations()
+    {
+        ArrayList<Location> empty = new ArrayList<Location>();
+        for(int r = 0; r < occupantArray.length; r++)
+        {
+            for(int c = 0; c < occupantArray[r].length; c++)
+            {
+                if(occupantArray[r][c] == null)
+                {
+                    Location temp = new Location(r, c);
+                    empty.add(temp);
+                }
+            }
+        }
+        return empty;
+    }
 }

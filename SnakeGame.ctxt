@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.params=
 comment0.target=SnakeGame()
+comment0.text=\n\ Constructor\ for\ the\ SnakeGame\n
 comment1.params=
 comment1.target=void\ play()
+comment1.text=\n\ Runs\ the\ game\n
 comment2.params=
 comment2.target=void\ upPressed()
 comment2.text=\n\ Up\ is\ pressed.\n
@@ -15,4 +17,10 @@ comment4.text=\n\ Left\ is\ pressed.\n
 comment5.params=
 comment5.target=void\ rightPressed()
 comment5.text=\n\ Right\ is\ pressed.\n
-numComments=6
+comment6.params=
+comment6.target=void\ spawnFoodStuff()
+comment6.text=\n\ Spawns\ a\ foodstuff\n
+comment7.params=won
+comment7.target=void\ gameOver(boolean)
+comment7.text=\n\ Ends\ the\ game\n\ \n\ @param\ won\ \ \ whether\ game\ was\ won\ or\ lost\n
+numComments=8

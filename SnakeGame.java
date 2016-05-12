@@ -13,19 +13,26 @@ public class SnakeGame implements ArrowListener
     private MyBoundedGrid<Block> grid;
     private BlockDisplay display;
     private Snake snake;
+    /**
+     * Constructor for the SnakeGame
+     */
     public SnakeGame()
     {
         playay = true;
         grid = new MyBoundedGrid<Block> (15,20);
-        snake = new Snake(grid);
+        snake = new Snake(grid, this);
         display = new BlockDisplay(grid);
         display.setArrowListener(this);
         display.setTitle("Snake");
         play();
     }
     
+    /**
+     * Runs the game
+     */
     public void play()
     {
+        spawnFoodStuff();
         while(playay)
         {
             try 
@@ -38,9 +45,7 @@ public class SnakeGame implements ArrowListener
                 else
                 {
                     //snake dies here.
-                    playay = false;
-                    display.showBlocks();
-                    new Tetris(true);
+                    gameOver(false);
                 }
             }
             catch(InterruptedException e)
@@ -91,6 +96,46 @@ public class SnakeGame implements ArrowListener
         if(snake.changeDirection("RIGHT"))
         {
             display.showBlocks();
+        }
+    }
+    
+    /**
+     * Spawns a foodstuff
+     */
+    public void spawnFoodStuff()
+    {
+        ArrayList<Location> emptyLocs = grid.getUnoccupiedLocations();
+        int size = emptyLocs.size();
+        if (size==0)
+        {
+            gameOver(true);
+            return;
+        }
+        int rand = (int)(Math.random()*size);
+        Location newFoodStuff = emptyLocs.get(rand);
+        Block square = new Block();
+        square.putSelfInGrid(grid, newFoodStuff);
+        square.setColor(Color.GREEN);
+    }
+    
+    /**
+     * Ends the game
+     * 
+     * @param won   whether game was won or lost
+     */
+    public void gameOver(boolean won)
+    {
+        playay = false;
+        display.showBlocks();
+        if (!won)
+        {
+            new Tetris(true);
+            System.out.println("You lost");
+            System.out.println("You ate " + snake.getNumItemsEaten() + " blocks.");
+        }
+        else
+        {
+            System.out.println("You won!");
         }
     }
 }

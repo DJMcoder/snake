@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=snakeGr
-comment0.target=Snake(MyBoundedGrid)
+comment0.params=snakeGr\ theGame
+comment0.target=Snake(MyBoundedGrid,\ SnakeGame)
 comment0.text=\n\ Constructor\ for\ the\ snake\ class\n\ \n\ @precondition\ \ \ \ snakeGr\ has\ a\ greater\ length\ and\ width\ than\ 3.\n
 comment1.params=eGrid\ loc
 comment1.target=boolean\ isEmpty(MyBoundedGrid,\ Location)
@@ -11,6 +11,9 @@ comment10.text=\n\ Sets\ the\ Direction\ to\ a\ new\ Direction.\n\ \n\ @param\ d
 comment11.params=
 comment11.target=boolean\ determineDirection()
 comment11.text=\n\ Determines\ the\ direction\ of\ the\ snake\ and\ moves\ it.\n
+comment12.params=
+comment12.target=int\ getNumItemsEaten()
+comment12.text=\n\ Returns\ the\ number\ of\ items\ eaten\n\ \n\ @return\ \ the\ number\ of\ items\ eaten\n
 comment2.params=
 comment2.target=java.util.ArrayList\ getLocations()
 comment3.params=
@@ -33,4 +36,4 @@ comment8.text=\n\ Returns\ the\ opposite\ Direction\n\ \n\ @return\ the\ opposit
 comment9.params=dir
 comment9.target=boolean\ validDirection(java.lang.String)
 comment9.text=\n\ Returns\ whether\ parameter\ is\ a\ valid\ Direction\n\ \n\ @param\ dir\ \ \ the\ direction\ to\ check\n\ @return\ whether\ it\ was\ valid\ or\ not\n
-numComments=12
+numComments=13
