@@ -30,7 +30,7 @@ public class SnakeGame implements ArrowListener
         {
             try 
             {
-                Thread.sleep(1000);
+                Thread.sleep(200);
                 if(snake.determineDirection()) //we need a new method to get the direction of the snake.
                 {
                     display.showBlocks();
@@ -55,7 +55,7 @@ public class SnakeGame implements ArrowListener
      */
     public void upPressed()
     {
-        if(snake.translate(0,1))
+        if(snake.changeDirection("UP"))
         {
             display.showBlocks();
         }
@@ -66,7 +66,7 @@ public class SnakeGame implements ArrowListener
      */
     public void downPressed()
     {
-        if(snake.translate(1,0))
+        if(snake.changeDirection("DOWN"))
         {
             display.showBlocks();
         }
@@ -77,7 +77,7 @@ public class SnakeGame implements ArrowListener
      */
     public void leftPressed()
     {
-        if(snake.translate(0,-1))
+        if(snake.changeDirection("LEFT"))
         {
             display.showBlocks();
         }
@@ -88,7 +88,7 @@ public class SnakeGame implements ArrowListener
      */
     public void rightPressed()
     {
-        if(snake.translate(0,1))
+        if(snake.changeDirection("RIGHT"))
         {
             display.showBlocks();
         }

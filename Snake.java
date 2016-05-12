@@ -104,15 +104,18 @@ public class Snake
      *      
      * @param dir   the direction requested
      * 
+     * @return  true if the direction was successfully changed; otherwise,
+     *          false
      */
-    public void changeDirection(String dir)
+    public boolean changeDirection(String dir)
     {
         String oppDirec = getOppositeDirection();
         if (dir == direction || dir == oppDirec)
         {
-            return;
+            return false;
         }
         direction = dir;
+        return true;
     }
 
     /**
