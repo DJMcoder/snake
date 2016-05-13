@@ -25,8 +25,8 @@ public class SnakeGame implements ArrowListener
         display = new BlockDisplay(grid);
         display.setArrowListener(this);
         display.setTitle("Snake");
-        play();
         waitTime = 100;
+        play();
     }
     
     /**
@@ -36,8 +36,14 @@ public class SnakeGame implements ArrowListener
      */
     public SnakeGame(int time)
     {
-        this();
+        playay = true;
+        grid = new MyBoundedGrid<Block> (15,20);
+        snake = new Snake(grid, this);
+        display = new BlockDisplay(grid);
+        display.setArrowListener(this);
+        display.setTitle("Snake");
         waitTime = time;
+        play();
     }
     
     /**
