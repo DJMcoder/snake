@@ -90,6 +90,10 @@ public class Snake
         Location headTarget = new Location (getHeadLocation().getRow() + deltaRow,
                 getHeadLocation().getCol() + deltaCol);
         boolean eatenItem = false;
+        if (!grid.isValid(headTarget))
+        {
+            return false;
+        }
         Block blockTarget = grid.get(headTarget);
         if (blockTarget!=null && blockTarget.getColor().equals(Color.GREEN))
         {
@@ -97,7 +101,7 @@ public class Snake
             itemsEaten++;
             grid.get(headTarget).removeSelfFromGrid();
         }
-        if (!grid.isValid(headTarget) || !isEmpty(grid, headTarget))
+        if (!isEmpty(grid, headTarget))
         {
             return false;
         }
