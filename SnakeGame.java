@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 /**
  * Write a description of class Snake here.
  * 
@@ -25,8 +27,6 @@ public class SnakeGame implements ArrowListener
         display = new BlockDisplay(grid);
         display.setArrowListener(this);
         display.setTitle("Snake");
-        waitTime = 100;
-        play();
     }
     
     /**
@@ -155,6 +155,41 @@ public class SnakeGame implements ArrowListener
         else
         {
             System.out.println("You won!");
+        }
+    }
+    
+    /**
+     * Oversees the operation of this class.
+     * 
+     * @param args  user's information from the command line
+     * 
+     * @throws IOException  if file with the hurricane information cannot be found
+     */
+    public static void main (String [] args)
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Choose Difficulty:");
+        System.out.println("Type 1 for Hard");
+        System.out.println("Type 2 for Medium");
+        System.out.println("Type 3 for Easy");
+        System.out.println("Note* Difficulty will vary by the speed of snake.");
+        int choice = in.nextInt();
+        SnakeGame game = new SnakeGame();
+        if(choice==1)
+        {
+            SnakeGame hardGame = new SnakeGame(100);
+        }
+        else if(choice==2)
+        {
+            SnakeGame mediumGame = new SnakeGame(200);
+        }
+        else if(choice==3)
+        {
+            SnakeGame easyGame = new SnakeGame(400);
+        }
+        else
+        {
+            throw new IllegalArgumentException("Not a valid entry");
         }
     }
 }
