@@ -13,6 +13,7 @@ public class SnakeGame implements ArrowListener
     private MyBoundedGrid<Block> grid;
     private BlockDisplay display;
     private Snake snake;
+    private int waitTime;
     /**
      * Constructor for the SnakeGame
      */
@@ -25,6 +26,18 @@ public class SnakeGame implements ArrowListener
         display.setArrowListener(this);
         display.setTitle("Snake");
         play();
+        waitTime = 100;
+    }
+    
+    /**
+     * Constructor for SnakeGame with Wait Time
+     * 
+     * @param time  the wait time to put in
+     */
+    public SnakeGame(int time)
+    {
+        this();
+        waitTime = time;
     }
     
     /**
@@ -37,7 +50,7 @@ public class SnakeGame implements ArrowListener
         {
             try 
             {
-                Thread.sleep(200);
+                Thread.sleep(waitTime);
                 if(snake.determineDirection()) //we need a new method to get the direction of the snake.
                 {
                     display.showBlocks();
