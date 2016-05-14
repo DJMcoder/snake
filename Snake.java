@@ -63,10 +63,10 @@ public class Snake
     }
 
     /**
-     * Adds a Tetrad to a given location in the given grid.
+     * Adds a Block to a given location in the given grid.
      * 
-     * @param   addGrid    grid where the tetrad will be placed in.
-     * @param   locs    location where the tetrad will be placed in.
+     * @param   addGrid    grid where the block will be placed in.
+     * @param   locs    location where the block will be placed in.
      */
     private void addToLocations(MyBoundedGrid<Block> addGrid, Location loc)
     {
