@@ -16,6 +16,7 @@ public class SnakeGame implements ArrowListener
     private BlockDisplay display;
     private Snake snake;
     private int waitTime;
+    private Location foodSpawningLocationVariable;
     /**
      * Constructor for the SnakeGame
      */
@@ -27,6 +28,16 @@ public class SnakeGame implements ArrowListener
         display = new BlockDisplay(grid);
         display.setArrowListener(this);
         display.setTitle("Snake");
+    }
+    
+    public MyBoundedGrid<Block> getGrid()
+    {
+        return grid;
+    }
+    
+    public Snake getSnakeUsed()
+    {
+        return snake;
     }
     
     /**
@@ -132,10 +143,17 @@ public class SnakeGame implements ArrowListener
         }
         int rand = (int)(Math.random()*size);
         Location newFoodStuff = emptyLocs.get(rand);
+        foodSpawningLocationVariable = newFoodStuff;
         Block square = new Block();
-        square.putSelfInGrid(grid, newFoodStuff);
+        square.putSelfInGrid(grid, foodSpawningLocationVariable);
         square.setColor(Color.GREEN);
     }
+    
+    public Location getFoodStuffSpawningLocation()
+    {
+        return foodSpawningLocationVariable;
+    }
+        
     
     /**
      * Ends the game
@@ -173,6 +191,7 @@ public class SnakeGame implements ArrowListener
         System.out.println("Type 2 for Medium");
         System.out.println("Type 3 for Easy");
         System.out.println("Note* Difficulty will vary by the speed of snake.");
+        System.out.println("Type 4 for the AI to play it.");
         int choice = in.nextInt();
         SnakeGame game = new SnakeGame();
         if(choice==1)
@@ -186,6 +205,10 @@ public class SnakeGame implements ArrowListener
         else if(choice==3)
         {
             SnakeGame easyGame = new SnakeGame(400);
+        }
+        else if(choice == 4)
+        {
+            SnakeAI computer = new SnakeAI();
         }
         else
         {
