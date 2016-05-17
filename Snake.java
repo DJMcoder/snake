@@ -189,21 +189,6 @@ public class Snake
     }
 
     /**
-     * Sets the Direction to a new Direction.
-     * 
-     * @param dir   Direction to set it to
-     */
-    public void setDirection(String dir)
-    {
-        if (validDirection(dir))
-        {
-            direction = dir;
-            return;
-        }
-        throw new IllegalArgumentException("Parameter is not a direction");
-    }
-
-    /**
      * Determines the direction of the snake and moves it.
      */
     public boolean determineDirection()
