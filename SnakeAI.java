@@ -9,41 +9,143 @@ import java.util.ArrayList;
  */
 public class SnakeAI extends SnakeGame
 {
-    // instance variables - replace the example below with your own
-    private ArrayList<Location> snakeLocations;
-    private Location snakeHead;
-    private Snake aiSnake;
-    private MyBoundedGrid<Block> aiGrid;
-
     /**
      * Constructor for objects of class SnakeAI
      */
     public SnakeAI()
     {
-        SnakeGame aIPlaying = new SnakeGame(10);
-        aiSnake = aIPlaying.getSnakeUsed();
-        snakeHead = aiSnake.getHeadLocation();
-        aiGrid = aIPlaying.getGrid();
-        
+        super(10);
+        play();
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Changes the direction of the snake
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * @return     the direction it changed to
      */
-    public void move()
+    public String change()
     {
-        if(disLeftWall() >= 1 && disRightWall() == aiGrid.getNumCols() - 1)
+        String res = "LEFT";
+        Location foodLocation = foodLocator();
+        Location headLocation = snake.getHeadLocation();
+        int foodCol = foodLocation.getCol();
+        int headCol = headLocation.getCol();
+        String direction = snake.getDirection();
+        if (foodCol<headCol)
         {
-            aiSnake.changeDirection("RIGHT");
+            res = "LEFT";
+            if (direction.equals("RIGHT"))
+            {
+                foodCol = headCol;
+            }
         }
-        else
+        else if (foodCol>headCol)
         {
+            res = "RIGHT";
+            if (direction.equals("LEFT"))
+            {
+                foodCol = headCol;
+            }
+        }
+        if(foodCol==headCol)
+        {
+            int foodRow = foodLocation.getRow();
+            int headRow = headLocation.getRow();
+            if (foodRow<headRow)
+            {
+                res = "UP";
+                if (direction.equals("DOWN"))
+                {
+                    if(snake.isEmpty(getGrid(), new Location(headRow, headLocation.getCol()-1)))
+                    {
+                        res = "LEFT";
+                    }
+                    else
+                    {
+                        res = "RIGHT";
+                    }
+                }
+            }
+            else
+            {
+                res = "DOWN";
+                if (direction.equals("UP"))
+                {
+                    if(snake.isEmpty(getGrid(), new Location(headRow, headLocation.getCol()-1)))
+                    {
+                        res = "LEFT";
+                    }
+                    else
+                    {
+                        res = "RIGHT";
+                    }
+                }
+            }
+        }
+        /*Location moveToSpot = getLocationFromHead(res, 1);
+        // if you are gonna hit yourself
+        if (!snake.isEmpty(getGrid(), moveToSpot) && !getGrid().get(moveToSpot).getColor().equals(Color.GREEN))
+        {
+            
+        }*/
+        snake.changeDirection(res);
+        return res;
+    }
+    
+    public Location getLocationFromHead(Location loc, String direc, int spaces)
+    {
+        int row = loc.getRow();
+        int col = loc.getCol();
+        Location res = snake.getHeadLocation();
+        if (direc.equals("RIGHT"))
+        {
+            res = new Location(row, col+spaces);
+        }
+        else if (direc.equals("LEFT"))
+        {
+            res = new Location(row, col-spaces);
+        }
+        else if (direc.equals("DOWN"))
+        {
+            res = new Location(row+spaces, col);
+        }
+        else if (direc.equals("UP"))
+        {
+            res = new Location(row-spaces, col);
+        }
+        return res;
+    }
+    
+    /**
+     * Runs the game
+     */
+    public void play()
+    {
+        spawnFoodStuff();
+        while(playay)
+        {
+            try 
+            {
+                Thread.sleep(getWaitTime());
+                change();
+                if(snake.determineDirection()) //we need a new method to get the direction of the snake.
+                {
+                    display.showBlocks();
+                }
+                else
+                {
+                    //snake dies here.
+                    gameOver(false);
+                }
+            }
+            catch(InterruptedException e)
+            {
+                //ignore
+            }
         }
     }
     
+    /*
     public int disLeftWall()
     {
         return snakeHead.getCol();
@@ -63,7 +165,8 @@ public class SnakeAI extends SnakeGame
     {
         return snakeHead.getRow();
     }
-    
+    */
+   
     public Location foodLocator()
     {
         return getFoodStuffSpawningLocation();

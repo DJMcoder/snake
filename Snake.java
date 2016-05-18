@@ -43,7 +43,7 @@ public class Snake
     /**
      * Checks to see if the given locations in the given grid are empty.
      */
-    private boolean isEmpty(MyBoundedGrid<Block> eGrid, Location loc)
+    public boolean isEmpty(MyBoundedGrid<Block> eGrid, Location loc)
     {
         if(eGrid.isValid(loc) && (eGrid.get(loc) == null || eGrid.get(loc).getColor().equals(Color.CYAN)))
         {
@@ -177,6 +177,58 @@ public class Snake
         throw new IllegalArgumentException("Direction is not a direction.");
     }
 
+    /**
+     * Returns the Direction to the right
+     * 
+     * @return direction to the right
+     */
+    public String getRightDirection()
+    {
+        if (direction == "UP")
+        {
+            return "RIGHT";
+        }
+        else if (direction == "DOWN")
+        {
+            return "LEFT";
+        }
+        else if (direction == "RIGHT")
+        {
+            return "DOWN";
+        }
+        else if (direction =="LEFT")
+        {
+            return "UP";
+        }
+        throw new IllegalArgumentException("Direction is not a direction.");
+    }
+    
+    /**
+     * Returns the Direction to the left
+     * 
+     * @return direction to the left
+     */
+    public String getLeftDirection()
+    {
+        if (direction == "UP")
+        {
+            return "RIGHT";
+        }
+        else if (direction == "DOWN")
+        {
+            return "LEFT";
+        }
+        else if (direction == "RIGHT")
+        {
+            return "DOWN";
+        }
+        else if (direction =="LEFT")
+        {
+            return "UP";
+        }
+        throw new IllegalArgumentException("Direction is not a direction.");
+    }
+    
     /**
      * Returns whether parameter is a valid Direction
      * 

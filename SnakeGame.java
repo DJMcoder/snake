@@ -11,10 +11,10 @@ import java.util.*;
  */
 public class SnakeGame implements ArrowListener
 {
-    private boolean playay;
+    public boolean playay;
     private MyBoundedGrid<Block> grid;
-    private BlockDisplay display;
-    private Snake snake;
+    public BlockDisplay display;
+    public Snake snake;
     private int waitTime;
     private Location foodSpawningLocationVariable;
     /**
@@ -35,9 +35,9 @@ public class SnakeGame implements ArrowListener
         return grid;
     }
     
-    public Snake getSnakeUsed()
+    public int getWaitTime()
     {
-        return snake;
+        return waitTime;
     }
     
     /**
@@ -153,7 +153,6 @@ public class SnakeGame implements ArrowListener
     {
         return foodSpawningLocationVariable;
     }
-        
     
     /**
      * Ends the game
@@ -208,7 +207,10 @@ public class SnakeGame implements ArrowListener
         }
         else if(choice == 4)
         {
-            SnakeAI computer = new SnakeAI();
+            while(true)
+            {
+                SnakeAI computer = new SnakeAI();
+            }
         }
         else
         {
