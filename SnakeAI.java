@@ -30,6 +30,7 @@ public class SnakeAI extends SnakeGame
         Location headLocation = snake.getHeadLocation();
         int foodCol = foodLocation.getCol();
         int headCol = headLocation.getCol();
+        getGrid().makeNumberGrid(headLocation, foodLocation);
         String direction = snake.getDirection();
         if (foodCol<headCol)
         {
@@ -128,6 +129,7 @@ public class SnakeAI extends SnakeGame
             {
                 Thread.sleep(getWaitTime());
                 change();
+                
                 if(snake.determineDirection()) //we need a new method to get the direction of the snake.
                 {
                     display.showBlocks();

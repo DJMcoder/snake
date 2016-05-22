@@ -26,4 +26,6 @@ comment7.text=\n\ Gets\ the\ location\ that\ are\ occupied.\n\ \n\ @return\ \ re
 comment8.params=
 comment8.target=java.util.ArrayList\ getUnoccupiedLocations()
 comment8.text=\n\ Gets\ the\ location\ that\ are\ unoccupied.\n\ \n\ @return\ \ returns\ the\ locations\ that\ are\ unoccupied.\n
-numComments=9
+comment9.params=origin\ target
+comment9.target=int[][]\ makeNumberGrid(Location,\ Location)
+numComments=10

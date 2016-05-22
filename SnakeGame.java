@@ -195,15 +195,15 @@ public class SnakeGame implements ArrowListener
         SnakeGame game = new SnakeGame();
         if(choice==1)
         {
-            SnakeGame hardGame = new SnakeGame(100);
+            SnakeGame hardGame = new SnakeGame(50);
         }
         else if(choice==2)
         {
-            SnakeGame mediumGame = new SnakeGame(200);
+            SnakeGame mediumGame = new SnakeGame(100);
         }
         else if(choice==3)
         {
-            SnakeGame easyGame = new SnakeGame(400);
+            SnakeGame easyGame = new SnakeGame(200);
         }
         else if(choice == 4)
         {

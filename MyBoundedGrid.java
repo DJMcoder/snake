@@ -132,7 +132,7 @@ public class MyBoundedGrid<E>
         }
         return notEmpty;
     }
-    
+
     /**
      * Gets the location that are unoccupied.
      * 
@@ -153,5 +153,112 @@ public class MyBoundedGrid<E>
             }
         }
         return empty;
+    }
+
+    public int[][] makeNumberGrid(Location origin, Location target)
+    {
+        int tarRow = target.getRow();
+        int tarCol = target.getCol();
+        int orgRow = origin.getRow();
+        int orgCol = origin.getCol();
+        int[][] res = new int[occupantArray.length][occupantArray[0].length];
+
+        ArrayList<Location> occupied = getOccupiedLocations();
+        for (Location loc: occupied)
+        {
+            res[loc.getRow()][loc.getCol()] = -2;
+        }
+
+        int curNum = 1;
+        res[tarRow][tarCol] = -1;
+        res[orgRow][orgCol] = 0;
+        ArrayList<Location> coords = new ArrayList<Location>();
+
+        for(int x = -1; x <= 1; x+= 2)
+        {
+            if(tarRow+x >= 0 && tarRow+x < occupantArray.length)
+            {
+                if(res[tarRow+x][tarCol]==0) 
+                {
+                    res[tarRow+x][tarCol] = curNum;
+                    coords.add(new Location(orgRow+x, orgCol));
+                }
+            }
+        }
+        for(int x = -1; x <= 1; x+= 2)
+        {
+            if(tarCol+x >= 0 && tarCol+x < occupantArray[0].length)
+            {
+                if(res[tarRow][tarCol+x]==0)
+                {
+                    res[tarRow][tarCol+x] = curNum;
+                    coords.add(new Location(orgRow, orgCol+x));
+                }
+            }
+        }
+        curNum++;
+        while (res[orgRow][orgCol]==0)
+        {
+
+            ArrayList<Location> newCoords = new ArrayList<Location>();
+            for (Location loc: coords)
+            {
+                int locRow = loc.getRow();
+                int locCol = loc.getCol();
+                for(int x = -1; x <= 1; x+= 2)
+                {
+                    if(locRow+x >= 0 && locRow+x < occupantArray.length)
+                    {
+                        if(res[locRow+x][locCol]==0) 
+                        {
+                            res[locRow+x][locCol] = curNum;
+                            newCoords.add(new Location(locRow+x, locCol));
+                        }
+                    }
+                }
+                for(int x = -1; x <= 1; x+= 2)
+                {
+                    if(locCol+x >= 0 && locCol+x < occupantArray[0].length)
+                    {
+                        if(res[locRow][locCol+x]==0)
+                        {
+                            res[locRow][locCol+x] = curNum;
+                            newCoords.add(new Location(locRow, locCol+x));
+                        }
+                    }
+                }
+            }
+
+            int len = newCoords.size();
+            System.out.println("len = " + len);
+            
+            for (Location loc: newCoords)
+                newCoords.add(loc);
+            curNum++;
+
+            for (int[] r: res)
+            {
+                for (int c: r)
+                {
+                    System.out.print(c + "\t");
+                }
+                System.out.println();
+            }
+            System.out.println();
+            System.out.println();
+        }
+
+        for (int[] r: res)
+        {
+            for (int c: r)
+            {
+                System.out.print(c + "\t");
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println();
+
+        return res;
     }
 }
