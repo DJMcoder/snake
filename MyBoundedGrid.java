@@ -204,11 +204,13 @@ public class MyBoundedGrid<E>
         }
         
         int curNum = 2;
+        int sum;
         
         // Expand the grid
         while (areAllAdjacentsZero(res, origin))
         {
             ArrayList<Location> matching = locationsOfInts(res, curNum-1);
+            sum = 0;
             
             // For each of the curNums in the grid
             for (Location loc: matching)
@@ -221,8 +223,13 @@ public class MyBoundedGrid<E>
                     if (res[adjRow][adjCol]==0)
                     {
                         res[adjRow][adjCol] = curNum;
+                        sum++;
                     }
                 }
+            }
+            if (sum==0)
+            {
+                throw new IllegalArgumentException("Road block");
             }
             curNum++;
         }

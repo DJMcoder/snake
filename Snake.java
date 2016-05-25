@@ -61,6 +61,11 @@ public class Snake
     {
         return locs.get(0);
     }
+    
+    public Location getTailLocation()
+    {
+        return locs.get(locs.size()-1);
+    }
 
     /**
      * Adds a Block to a given location in the given grid.

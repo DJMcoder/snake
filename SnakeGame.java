@@ -22,7 +22,6 @@ public class SnakeGame implements ArrowListener
      */
     public SnakeGame()
     {
-        playay = true;
         grid = new MyBoundedGrid<Block> (15,20);
         snake = new Snake(grid, this);
         display = new BlockDisplay(grid);

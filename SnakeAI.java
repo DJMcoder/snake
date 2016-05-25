@@ -30,7 +30,15 @@ public class SnakeAI extends SnakeGame
         int headRow = headLocation.getRow();
         int headCol = headLocation.getCol();
         MyBoundedGrid<Block> grid = getGrid();
-        int[][] mat = grid.makeNumberGrid(headLocation, foodLocation);
+        int[][] mat;
+        try
+        {
+            mat = grid.makeNumberGrid(headLocation, foodLocation);
+        }
+        catch (IllegalArgumentException e)
+        {
+            mat = grid.makeNumberGrid(headLocation, snake.getTailLocation());
+        }
         
         ArrayList<Location> adjacents = grid.getValidAdjacentLocations(headLocation);
         int smallestVal = Integer.MAX_VALUE;
