@@ -121,7 +121,7 @@ public class SnakeAI extends SnakeGame
      * Runs the game
      */
     public void play()
-    {
+    {   
         spawnFoodStuff();
         while(playay)
         {
@@ -168,7 +168,9 @@ public class SnakeAI extends SnakeGame
         return snakeHead.getRow();
     }
     */
-   
+    /**
+     * Gets the Location of the Food
+     */
     public Location foodLocator()
     {
         return getFoodStuffSpawningLocation();

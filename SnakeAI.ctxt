@@ -12,5 +12,5 @@ comment3.target=void\ play()
 comment3.text=\n\ Runs\ the\ game\n
 comment4.params=
 comment4.target=Location\ foodLocator()
-comment4.text=\n\ \ \ \ public\ int\ disLeftWall()\n\ \ \ \ {\n\ \ \ \ \ \ \ \ return\ snakeHead.getCol();\n\ \ \ \ }\n\ \ \ \ \n\ \ \ \ public\ int\ disRightWall()\n\ \ \ \ {\n\ \ \ \ \ \ \ \ return\ aiGrid.getNumCols()\ -\ snakeHead.getCol();\n\ \ \ \ }\n\ \ \ \ \n\ \ \ \ public\ int\ disDownWall()\n\ \ \ \ {\n\ \ \ \ \ \ \ \ return\ aiGrid.getNumRows()\ -\ snakeHead.getRow();\n\ \ \ \ }\n\ \ \ \ \n\ \ \ \ public\ int\ disUpWall()\n\ \ \ \ {\n\ \ \ \ \ \ \ \ return\ snakeHead.getRow();\n\ \ \ \ }\n
+comment4.text=\n\ Gets\ the\ Location\ of\ the\ Food\n
 numComments=5
