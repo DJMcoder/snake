@@ -94,6 +94,9 @@ public class Snake
     {
         Location headTarget = new Location (getHeadLocation().getRow() + deltaRow,
                 getHeadLocation().getCol() + deltaCol);
+                
+        Location toRemove = locs.remove(locs.size()-1);
+        grid.get(toRemove).removeSelfFromGrid();
         boolean eatenItem = false;
         if (!grid.isValid(headTarget))
         {
@@ -112,13 +115,10 @@ public class Snake
         }
         locs.add(0, headTarget);
         addToLocations(grid, headTarget);
-        if (!eatenItem)
+        if (eatenItem)
         {
-            Location toRemove = locs.remove(locs.size()-1);
-            grid.get(toRemove).removeSelfFromGrid();
-        }
-        else
-        {
+            locs.add(toRemove);
+            addToLocations(grid, toRemove);
             game.spawnFoodStuff();
         }
         return true;
