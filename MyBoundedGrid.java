@@ -243,7 +243,7 @@ public class MyBoundedGrid<E>
     }
     
     /**
-     * Returns an ArrayList of valid, adjacent locations to a start point. 
+     * Returns an ArrayList of valid, adjacent locations to a start point, going UP, DOWN, RIGHT, LEFT. 
      * 
      * @param start     the start point
      * 

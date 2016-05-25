@@ -25,72 +25,60 @@ public class SnakeAI extends SnakeGame
      */
     public String change()
     {
-        String res = "LEFT";
         Location foodLocation = foodLocator();
         Location headLocation = snake.getHeadLocation();
-        int foodCol = foodLocation.getCol();
+        int headRow = headLocation.getRow();
         int headCol = headLocation.getCol();
-        getGrid().makeNumberGrid(headLocation, foodLocation);
-        String direction = snake.getDirection();
-        if (foodCol<headCol)
+        MyBoundedGrid<Block> grid = getGrid();
+        int[][] mat = grid.makeNumberGrid(headLocation, foodLocation);
+        
+        ArrayList<Location> adjacents = grid.getValidAdjacentLocations(headLocation);
+        int smallestVal = Integer.MAX_VALUE;
+        int dir = 0;
+        for(int i = 0; i < adjacents.size(); i++)
         {
-            res = "LEFT";
-            if (direction.equals("RIGHT"))
+            Location loc = adjacents.get(i);
+            int cur = mat[loc.getRow()][loc.getCol()];
+            if (cur < smallestVal && cur!=0 && cur!=-2)
             {
-                foodCol = headCol;
+                smallestVal = cur;
+                dir = i;
             }
         }
-        else if (foodCol>headCol)
-        {
-            res = "RIGHT";
-            if (direction.equals("LEFT"))
-            {
-                foodCol = headCol;
-            }
-        }
-        if(foodCol==headCol)
-        {
-            int foodRow = foodLocation.getRow();
-            int headRow = headLocation.getRow();
-            if (foodRow<headRow)
-            {
-                res = "UP";
-                if (direction.equals("DOWN"))
-                {
-                    if(snake.isEmpty(getGrid(), new Location(headRow, headLocation.getCol()-1)))
-                    {
-                        res = "LEFT";
-                    }
-                    else
-                    {
-                        res = "RIGHT";
-                    }
-                }
-            }
-            else
-            {
-                res = "DOWN";
-                if (direction.equals("UP"))
-                {
-                    if(snake.isEmpty(getGrid(), new Location(headRow, headLocation.getCol()-1)))
-                    {
-                        res = "LEFT";
-                    }
-                    else
-                    {
-                        res = "RIGHT";
-                    }
-                }
-            }
-        }
-        /*Location moveToSpot = getLocationFromHead(res, 1);
-        // if you are gonna hit yourself
-        if (!snake.isEmpty(getGrid(), moveToSpot) && !getGrid().get(moveToSpot).getColor().equals(Color.GREEN))
-        {
-            
-        }*/
+        String res = directionFromHead(adjacents.get(dir));
         snake.changeDirection(res);
         return res;
+    }
+    
+    public String directionFromHead(Location loc)
+    {
+        Location head = snake.getHeadLocation();
+        int locRow = loc.getRow();
+        int locCol = loc.getCol();
+        
+        Location locUP      = new Location(locRow-1, locCol);
+        Location locDOWN    = new Location(locRow+1, locCol);
+        Location locRIGHT   = new Location(locRow, locCol+1);
+        Location locLEFT    = new Location(locRow, locCol-1);
+        
+        if (head.equals(locUP))
+        {
+            return "DOWN";
+        }
+        if (head.equals(locDOWN))
+        {
+            return "UP";
+        }
+        if (head.equals(locRIGHT))
+        {
+            return "LEFT";
+        }
+        if (head.equals(locLEFT))
+        {
+            return "RIGHT";
+        }
+        
+        return "";
     }
     
     public Location getLocationFromHead(Location loc, String direc, int spaces)
