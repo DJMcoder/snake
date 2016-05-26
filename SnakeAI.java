@@ -31,13 +31,40 @@ public class SnakeAI extends SnakeGame
         int headCol = headLocation.getCol();
         MyBoundedGrid<Block> grid = getGrid();
         int[][] mat;
+        String res;
         try
         {
             mat = grid.makeNumberGrid(headLocation, foodLocation);
         }
         catch (IllegalArgumentException e)
         {
-            mat = grid.makeNumberGrid(headLocation, snake.getTailLocation());
+            try
+            {
+                mat = grid.makeNumberGrid(headLocation, snake.getTailLocation());
+            }
+            catch (IllegalArgumentException i)
+            {
+                res = snake.getDirection();
+                if (isDirectionClear(res))
+                {
+                    return res;
+                }
+                else
+                {
+                    res = snake.getRightDirection();
+                    if (isDirectionClear(res))
+                    {
+                        snake.changeDirection(res);
+                        return res;
+                    }
+                    else
+                    {
+                        res = snake.getLeftDirection();
+                        snake.changeDirection(res);
+                        return res;
+                    }
+                }
+            }
         }
         
         ArrayList<Location> adjacents = grid.getValidAdjacentLocations(headLocation);
@@ -53,9 +80,22 @@ public class SnakeAI extends SnakeGame
                 dir = i;
             }
         }
-        String res = directionFromHead(adjacents.get(dir));
+        res = directionFromHead(adjacents.get(dir));
         snake.changeDirection(res);
         return res;
+    }
+    
+    public boolean isDirectionClear(String direction)
+    {
+        Location test = getLocationFromHead(snake.getHeadLocation(), direction, 1);
+        try
+        {
+            return getGrid().get(test)==null;
+        }
+        catch (IndexOutOfBoundsException e)
+        {
+            return false;
+        }
     }
     
     public String directionFromHead(Location loc)
