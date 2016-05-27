@@ -167,12 +167,12 @@ public class MyBoundedGrid<E>
         int gridNumRows = occupantArray.length;
         int gridNumCols = occupantArray[0].length;
         int[][] res = new int[gridNumRows][gridNumCols];
-        
+
         int orgRow = origin.getRow();
         int orgCol = origin.getCol();
         int tarRow = target.getRow();
         int tarCol = target.getCol();
-        
+
         // Represent filled locations as -2
         for (int row = 0; row < gridNumRows; row++)
         {
@@ -184,34 +184,34 @@ public class MyBoundedGrid<E>
                 }
             }
         }
-        
+
         // Represent foodstuff as -1
         res[tarRow][tarCol] = -1; 
-        
+
         // Represent head as -3
         res[orgRow][orgCol] = -3;
-        
+
         // Make adjacent locations of foodstuff = 1
         for (Location loc: getValidEmptyAdjacentLocations(target))
         {
             int locRow = loc.getRow();
             int locCol = loc.getCol();
-            
+
             if (res[locRow][locCol]==0)
             {
                 res[locRow][locCol]=1;
             }
         }
-        
+
         int curNum = 2;
         int sum;
-        
+
         // Expand the grid
         while (areAllAdjacentsZero(res, origin))
         {
             ArrayList<Location> matching = locationsOfInts(res, curNum-1);
             sum = 0;
-            
+
             // For each of the curNums in the grid
             for (Location loc: matching)
             {
@@ -233,22 +233,22 @@ public class MyBoundedGrid<E>
             }
             curNum++;
         }
-        
+
         // Print out the current grid
-        for (int[] row: res)
+        /*for (int[] row: res)
         {
-            System.out.println();
-            for (int ele: row)
-            {
-                System.out.print(ele + "\t");
-            }
-            System.out.println();
+        System.out.println();
+        for (int ele: row)
+        {
+        System.out.print(ele + "\t");
         }
         System.out.println();
+        }
         System.out.println();
+        System.out.println();*/
         return res;
+        
     }
-    
     /**
      * Returns an ArrayList of valid, adjacent locations to a start point, going UP, DOWN, RIGHT, LEFT. 
      * 
@@ -265,12 +265,12 @@ public class MyBoundedGrid<E>
         Location down   = new Location(startRow-1, startCol);
         Location right  = new Location(startRow, startCol+1);
         Location left   = new Location(startRow, startCol-1);
-        
+
         res.add(up);
         res.add(down);
         res.add(right);
         res.add(left);
-        
+
         for (int i = res.size()-1; i>=0; i--)
         {
             Location cur = res.get(i);
@@ -279,10 +279,10 @@ public class MyBoundedGrid<E>
                 res.remove(i);
             }
         }
-        
+
         return res;
     }
-    
+
     /**
      * Returns an ArrayList of valid, empty, adjacent locations to a start point. 
      * 
@@ -293,7 +293,7 @@ public class MyBoundedGrid<E>
     public ArrayList<Location> getValidEmptyAdjacentLocations(Location start)
     {
         ArrayList<Location> res = getValidAdjacentLocations(start);
-        
+
         for (int i = res.size()-1; i>=0; i--)
         {
             Location cur = res.get(i);
@@ -302,17 +302,17 @@ public class MyBoundedGrid<E>
                 res.remove(i);
             }
         }
-        
+
         return res;
     }
-    
+
     /**
      * Helper to makeNumberGrid(). Checks to see if the numbers around the origin are all 0.
      */
     public boolean areAllAdjacentsZero(int[][] array, Location origin)
     {
         ArrayList<Location> adjacents = getValidAdjacentLocations(origin);
-        
+
         for (Location loc: adjacents)
         {
             if (array[loc.getRow()][loc.getCol()]!=0 && array[loc.getRow()][loc.getCol()]!=-2)
@@ -320,10 +320,10 @@ public class MyBoundedGrid<E>
                 return false;
             }
         }
-        
+
         return true;
     }
-    
+
     /**
      * Helper to makeNumberGrid(). Returns the locations on an int[][] of certain ints. 
      */
@@ -335,7 +335,7 @@ public class MyBoundedGrid<E>
             for (int col=0; col<array[0].length; col++)
                 if (array[row][col]==check)
                     res.add(new Location(row, col));
-                    
+
         return res;
     }
 }

@@ -14,7 +14,7 @@ public class SnakeAI extends SnakeGame
      */
     public SnakeAI()
     {
-        super(10);
+        super(1);
         play();
     }
 
@@ -44,29 +44,38 @@ public class SnakeAI extends SnakeGame
             }
             catch (IllegalArgumentException i)
             {
-                res = snake.getDirection();
-                if (isDirectionClear(res))
+                try
                 {
-                    return res;
+                    String destination = directionFarthestFromBarrier();
+                    int sp = spacesToBarrierDirection(destination);
+                    mat = grid.makeNumberGrid(headLocation, getLocationFromHead(headLocation, destination, sp));
                 }
-                else
+                catch (IllegalArgumentException p)
                 {
-                    res = snake.getRightDirection();
+                    res = snake.getDirection();
                     if (isDirectionClear(res))
                     {
-                        snake.changeDirection(res);
                         return res;
                     }
                     else
                     {
-                        res = snake.getLeftDirection();
-                        snake.changeDirection(res);
-                        return res;
+                        res = snake.getRightDirection();
+                        if (isDirectionClear(res))
+                        {
+                            snake.changeDirection(res);
+                            return res;
+                        }
+                        else
+                        {
+                            res = snake.getLeftDirection();
+                            snake.changeDirection(res);
+                            return res;
+                        }
                     }
                 }
             }
         }
-        
+
         ArrayList<Location> adjacents = grid.getValidAdjacentLocations(headLocation);
         int smallestVal = Integer.MAX_VALUE;
         int dir = 0;
@@ -84,7 +93,7 @@ public class SnakeAI extends SnakeGame
         snake.changeDirection(res);
         return res;
     }
-    
+
     public boolean isDirectionClear(String direction)
     {
         Location test = getLocationFromHead(snake.getHeadLocation(), direction, 1);
@@ -97,18 +106,18 @@ public class SnakeAI extends SnakeGame
             return false;
         }
     }
-    
+
     public String directionFromHead(Location loc)
     {
         Location head = snake.getHeadLocation();
         int locRow = loc.getRow();
         int locCol = loc.getCol();
-        
+
         Location locUP      = new Location(locRow-1, locCol);
         Location locDOWN    = new Location(locRow+1, locCol);
         Location locRIGHT   = new Location(locRow, locCol+1);
         Location locLEFT    = new Location(locRow, locCol-1);
-        
+
         if (head.equals(locUP))
         {
             return "DOWN";
@@ -125,10 +134,45 @@ public class SnakeAI extends SnakeGame
         {
             return "RIGHT";
         }
-        
+
         return "";
     }
-    
+
+    public String directionFarthestFromBarrier()
+    {
+        int right = spacesToBarrierDirection(snake.getRightDirection());
+        int left = spacesToBarrierDirection(snake.getLeftDirection());
+        int forward = spacesToBarrierDirection(snake.getDirection());
+        int max = Math.max(Math.max(right, left), forward);
+        
+        if(max == right)
+        {
+            return snake.getRightDirection();
+        }
+        else if(max == left)
+        {
+            return snake.getLeftDirection();
+        }
+        else
+        {
+            return snake.getDirection();
+        }
+    }
+
+    public int spacesToBarrierDirection(String dir)
+    {
+        Location headLoc = snake.getHeadLocation();
+        MyBoundedGrid<Block> grid = getGrid();
+        int spaces = 1;
+        Location test = getLocationFromHead(headLoc, dir, spaces);
+        while(grid.isValid(test) && test == null)
+        {
+            test = getLocationFromHead(headLoc, dir, spaces++);
+        }
+        spaces--;
+        return spaces;
+    }
+
     public Location getLocationFromHead(Location loc, String direc, int spaces)
     {
         int row = loc.getRow();
@@ -152,7 +196,7 @@ public class SnakeAI extends SnakeGame
         }
         return res;
     }
-    
+
     /**
      * Runs the game
      */
@@ -165,7 +209,7 @@ public class SnakeAI extends SnakeGame
             {
                 Thread.sleep(getWaitTime());
                 change();
-                
+
                 if(snake.determineDirection()) //we need a new method to get the direction of the snake.
                 {
                     display.showBlocks();
@@ -182,28 +226,28 @@ public class SnakeAI extends SnakeGame
             }
         }
     }
-    
+
     /*
     public int disLeftWall()
     {
-        return snakeHead.getCol();
+    return snakeHead.getCol();
     }
-    
+
     public int disRightWall()
     {
-        return aiGrid.getNumCols() - snakeHead.getCol();
+    return aiGrid.getNumCols() - snakeHead.getCol();
     }
-    
+
     public int disDownWall()
     {
-        return aiGrid.getNumRows() - snakeHead.getRow();
+    return aiGrid.getNumRows() - snakeHead.getRow();
     }
-    
+
     public int disUpWall()
     {
-        return snakeHead.getRow();
+    return snakeHead.getRow();
     }
-    */
+     */
     /**
      * Gets the Location of the Food
      */

@@ -28,17 +28,17 @@ public class SnakeGame implements ArrowListener
         display.setArrowListener(this);
         display.setTitle("Snake");
     }
-    
+
     public MyBoundedGrid<Block> getGrid()
     {
         return grid;
     }
-    
+
     public int getWaitTime()
     {
         return waitTime;
     }
-    
+
     /**
      * Constructor for SnakeGame with Wait Time
      * 
@@ -55,7 +55,7 @@ public class SnakeGame implements ArrowListener
         waitTime = time;
         play();
     }
-    
+
     /**
      * Runs the game
      */
@@ -84,7 +84,7 @@ public class SnakeGame implements ArrowListener
         }
     }
 
-     /**
+    /**
      * Up is pressed.
      */
     public void upPressed()
@@ -127,7 +127,7 @@ public class SnakeGame implements ArrowListener
             display.showBlocks();
         }
     }
-    
+
     /**
      * Spawns a foodstuff
      */
@@ -147,12 +147,12 @@ public class SnakeGame implements ArrowListener
         square.putSelfInGrid(grid, foodSpawningLocationVariable);
         square.setColor(Color.GREEN);
     }
-    
+
     public Location getFoodStuffSpawningLocation()
     {
         return foodSpawningLocationVariable;
     }
-    
+
     /**
      * Ends the game
      * 
@@ -173,7 +173,7 @@ public class SnakeGame implements ArrowListener
             System.out.println("You won!");
         }
     }
-    
+
     /**
      * Oversees the operation of this class.
      * 
