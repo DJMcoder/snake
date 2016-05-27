@@ -183,37 +183,60 @@ public class SnakeGame implements ArrowListener
      */
     public static void main (String [] args)
     {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Choose Difficulty:");
-        System.out.println("Type 1 for Hard");
-        System.out.println("Type 2 for Medium");
-        System.out.println("Type 3 for Easy");
-        System.out.println("Note* Difficulty will vary by the speed of snake.");
-        System.out.println("Type 4 for the AI to play it.");
-        int choice = in.nextInt();
-        SnakeGame game = new SnakeGame();
-        if(choice==1)
+        boolean playing = true;
+        while(playing)
         {
-            SnakeGame hardGame = new SnakeGame(50);
-        }
-        else if(choice==2)
-        {
-            SnakeGame mediumGame = new SnakeGame(100);
-        }
-        else if(choice==3)
-        {
-            SnakeGame easyGame = new SnakeGame(200);
-        }
-        else if(choice == 4)
-        {
-            while(true)
+            Scanner in = new Scanner(System.in);
+            System.out.println("Choose Difficulty:");
+            System.out.println("Type 1 for Hard");
+            System.out.println("Type 2 for Medium");
+            System.out.println("Type 3 for Easy");
+            System.out.println("Type 4 for the AI to play it.");
+            System.out.println("Type 5 for the Custom AI to play it.");
+            System.out.println("Type 6 for a Custom game");
+            System.out.println("Type 7 to quit.");
+
+            System.out.println("Note* Difficulty will vary by the speed of snake.");
+            
+            int choice = in.nextInt();
+            SnakeGame game = new SnakeGame();
+
+            if(choice==1)
             {
-                SnakeAI computer = new SnakeAI();
+                SnakeGame hardGame = new SnakeGame(50);
             }
-        }
-        else
-        {
-            throw new IllegalArgumentException("Not a valid entry");
+            else if(choice==2)
+            {
+                SnakeGame mediumGame = new SnakeGame(100);
+            }
+            else if(choice==3)
+            {
+                SnakeGame easyGame = new SnakeGame(200);
+            }
+            else if(choice == 4)
+            {
+                SnakeAI computer = new SnakeAI(10);
+            }
+            else if(choice == 5)
+            {
+                System.out.println("Enter the speed of the AI");
+                int speed = in.nextInt();
+                SnakeAI computer = new SnakeAI(speed);
+            }
+            else if(choice == 6)
+            {
+                System.out.println("Enter the speed of the game");
+                int speed = in.nextInt();
+                SnakeGame customGame = new SnakeGame(speed);
+            }
+            else if(choice == 7)
+            {
+                playing = false;;
+            }
+            else
+            {
+                throw new IllegalArgumentException("Not a valid entry");
+            }
         }
     }
 }

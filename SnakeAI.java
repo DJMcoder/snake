@@ -12,9 +12,9 @@ public class SnakeAI extends SnakeGame
     /**
      * Constructor for objects of class SnakeAI
      */
-    public SnakeAI()
+    public SnakeAI(int sp)
     {
-        super(1);
+        super(sp);
         play();
     }
 
