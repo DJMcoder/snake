@@ -1,0 +1,6 @@
+{
+  "name": "Snake",
+  "tagline": "A classic game of snake in Java, along with an AI to play the game. ",
+  "body": "# snake\r\n\r\n## [ Wiki ]( https://github.com/DJMcoder/snake/wiki )\r\n\r\n## Contributors\r\n\r\n@DJMCoder\r\n@jhkim804\r\n\r\n## What to do with the zip\r\n\r\nThis is for a APCSA project, so we used BlueJ ([download here](http://www.bluej.org/)). Open the folder in BlueJ, and run main() on the SnakeGame. \r\n\r\n## Using this for code\r\n\r\nIf you are using this project to learn code or practice code, please keep the following code at the top of the project:\r\n\r\n```\r\n/**\r\n * @author Jin Kim\r\n * @author David Melisso\r\n */\r\n```\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
