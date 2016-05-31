@@ -20,8 +20,9 @@ public class Snake
      * 
      * @precondition    snakeGr has a greater length and width than 3.
      */
-    public Snake(MyBoundedGrid<Block> snakeGr, SnakeGame theGame)
+    public Snake(Color col, MyBoundedGrid<Block> snakeGr, SnakeGame theGame)
     {
+        color = col;
         game = theGame;
         itemsEaten = 0;
         locs = new ArrayList<Location>();
@@ -38,6 +39,14 @@ public class Snake
             startBlocks.putSelfInGrid(snakeGr, snakeLoc);
             locs.add(snakeLoc);
         }
+    }
+    
+    /**
+     *  Constructor for the snake class without color
+     */
+    public Snake(MyBoundedGrid<Block> snakeGr, SnakeGame theGame)
+    {
+        this(Color.BLUE, snakeGr, theGame);
     }
 
     /**

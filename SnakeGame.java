@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.io.*;
 import java.util.*;
+import java.lang.reflect.Field;
 /**
  * Write a description of class Snake here.
  * 
@@ -18,15 +19,44 @@ public class SnakeGame implements ArrowListener
     private int waitTime;
     private Location foodSpawningLocationVariable;
     /**
-     * Constructor for the SnakeGame
+     * Constructor for the SnakeGame with waitTime and Color
      */
-    public SnakeGame()
+    public SnakeGame(Color color, int time)
     {
+        playay = true;
         grid = new MyBoundedGrid<Block> (15,20);
-        snake = new Snake(grid, this);
+        snake = new Snake(color, grid, this);
         display = new BlockDisplay(grid);
         display.setArrowListener(this);
         display.setTitle("Snake");
+        waitTime = time;
+        play();
+    }
+
+    /**
+     * Constructor for SnakeGame with Wait Time
+     * 
+     * @param time  the wait time to put in
+     */
+    public SnakeGame(int time)
+    {
+        this(Color.BLUE, time);
+    }
+
+    /**
+     * Constructor for SnakeGame with Color
+     */
+    public SnakeGame(Color color)
+    {
+        this(color, 100);
+    }
+
+    /**
+     * Default Constructor for the SnakeGame
+     */
+    public SnakeGame()
+    {
+        this(Color.BLUE, 100);
     }
 
     public MyBoundedGrid<Block> getGrid()
@@ -37,23 +67,6 @@ public class SnakeGame implements ArrowListener
     public int getWaitTime()
     {
         return waitTime;
-    }
-
-    /**
-     * Constructor for SnakeGame with Wait Time
-     * 
-     * @param time  the wait time to put in
-     */
-    public SnakeGame(int time)
-    {
-        playay = true;
-        grid = new MyBoundedGrid<Block> (15,20);
-        snake = new Snake(grid, this);
-        display = new BlockDisplay(grid);
-        display.setArrowListener(this);
-        display.setTitle("Snake");
-        waitTime = time;
-        play();
     }
 
     /**
@@ -194,12 +207,12 @@ public class SnakeGame implements ArrowListener
             System.out.println("Type 4 for the AI to play it.");
             System.out.println("Type 5 for the Custom AI to play it.");
             System.out.println("Type 6 for a Custom game");
-            System.out.println("Type 7 to quit.");
+            System.out.println("Type 7 for a AI to play it forever");
+            System.out.println("Type 8 to quit.");
 
             System.out.println("Note* Difficulty will vary by the speed of snake.");
-            
+
             int choice = in.nextInt();
-            SnakeGame game = new SnakeGame();
 
             if(choice==1)
             {
@@ -215,7 +228,7 @@ public class SnakeGame implements ArrowListener
             }
             else if(choice == 4)
             {
-                SnakeAI computer = new SnakeAI(10);
+                SnakeAI computer = new SnakeAI();
             }
             else if(choice == 5)
             {
@@ -231,7 +244,16 @@ public class SnakeGame implements ArrowListener
             }
             else if(choice == 7)
             {
-                playing = false;;
+                System.out.println("Enter the speed of the AI");
+                int speed = in.nextInt();
+                while (true)
+                {
+                    SnakeAI computer = new SnakeAI(speed);
+                }
+            }
+            else if(choice == 8)
+            {
+                playing = false;
             }
             else
             {

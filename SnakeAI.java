@@ -12,10 +12,27 @@ public class SnakeAI extends SnakeGame
     /**
      * Constructor for objects of class SnakeAI
      */
+    public SnakeAI(Color color, int sp)
+    {
+        super(color, sp);
+    }
+    
+    public SnakeAI(Color color)
+    {
+        this(color, 10);
+    }
+    
     public SnakeAI(int sp)
     {
-        super(sp);
-        play();
+        this(Color.BLUE, sp);
+    }
+    
+    /**
+     * Default constructor for SnakeAI
+     */
+    public SnakeAI()
+    {
+        this(Color.BLUE, 10);
     }
 
     /**
